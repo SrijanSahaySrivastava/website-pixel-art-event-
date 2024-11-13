@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.status {
+    margin: 10px;
+    font-size: 18px;
+}
+
+.color-picker {
+    display: flex;
+    gap: 10px;
+    margin: 10px;
+}
+
+.color {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+
+.color.red { background-color: red; }
+.color.blue { background-color: blue; }
+.color.green { background-color: green; }
+.color.yellow { background-color: yellow; }
+.color.black { background-color: black; }
+.color.white { background-color: white; }
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(100, 10px);
+    grid-template-rows: repeat(100, 10px);
+    gap: 1px;
+    margin: 10px;
+}
+
+.pixel {
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid #ddd;
+}
