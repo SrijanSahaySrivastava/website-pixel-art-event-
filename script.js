@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const usernameInput = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
-        const response = await fetch('http://localhost:8000/token', {
+        const response = await fetch('http://ec2-13-233-190-109.ap-south-1.compute.amazonaws.com:8000/token', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const username = document.getElementById('reg-username').value;
         const password = document.getElementById('reg-password').value;
 
-        const response = await fetch('http://localhost:8000/register', {
+        const response = await fetch('http://ec2-13-233-190-109.ap-south-1.compute.amazonaws.com:8000/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load the board from the backend
     function initializeBoard() {
-        fetch('http://localhost:8000/board', {
+        fetch('http://ec2-13-233-190-109.ap-south-1.compute.amazonaws.com:8000/board', {
             headers: {
                 'Authorization': `Bearer ${token}`,
             },
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const payload = { x, y, color: selectedColor, user_id: userId, username: username };
         console.log('Sending payload:', payload);
 
-        fetch('http://localhost:8000/update_pixel', {
+        fetch('http://ec2-13-233-190-109.ap-south-1.compute.amazonaws.com:8000/update_pixel', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
