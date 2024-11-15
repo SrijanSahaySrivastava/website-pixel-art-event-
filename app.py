@@ -238,6 +238,29 @@ async def update_pixel(update: PixelUpdate, current_user: User = Depends(get_cur
 
     return {"message": "Pixel updated successfully"}
 
+@app.post("/update_pixel_no_cooldown")
+async def update_pixel_no_cooldown(update: PixelUpdate, current_user: User = Depends(get_current_active_user)):
+    print(f"Received update without cooldown: {update}")  # Log the received payload
+
+    # Validate coordinates
+    if not (0 <= update.x < BOARD_WIDTH and 0 <= update.y < BOARD_HEIGHT):
+        print(f"Invalid coordinates: x={update.x}, y={update.y}")
+        raise HTTPException(status_code=400, detail="Invalid coordinates")
+
+    # Update the pixel color and save the username
+    redis_client.hset("board", f"{update.x},{update.y}", f"{update.color},{update.username}")
+
+    # Broadcast the update to all clients
+    update_message = {
+        "x": update.x,
+        "y": update.y,
+        "color": update.color,
+        "username": update.username
+    }
+    await manager.broadcast(update_message)
+
+    return {"message": "Pixel updated successfully without cooldown"}
+
 @app.get("/board")
 def get_board(current_user: User = Depends(get_current_active_user)):
     board = redis_client.hgetall("board")

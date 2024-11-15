@@ -3,3 +3,6 @@ fastapi
 uvicorn
 redis
 sqlalchemy
+pydantic
+passlib
+python-jose
