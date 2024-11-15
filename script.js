@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // WebSocket connection to backend
-    const socket = new WebSocket('ws://localhost:8000/ws');
+    const socket = new WebSocket('ws://ec2-13-233-190-109.ap-south-1.compute.amazonaws.com:8000/ws');
 
     socket.onopen = () => {
         console.log('Connected to WebSocket');
