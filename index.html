@@ -3,21 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>r/place Clone</title>
+    <title>Pixel palette</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="status">Select a color and click a pixel to update!</div>
-    <div class="color-picker">
-        <div class="color red" data-color="red"></div>
-        <div class="color blue" data-color="blue"></div>
-        <div class="color green" data-color="green"></div>
-        <div class="color yellow" data-color="yellow"></div>
-        <div class="color black" data-color="black"></div>
-        <div class="color white" data-color="white"></div>
+    <button id="info-button">API Info</button>
+    <div id="info-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>API Information</h2>
+            <p>You can also call an API to add your pixel through code. Here is a sample:</p>
+            <p>Get your Token First</p>
+            <pre>
+                <code>
+const response = await fetch('http://localhost:8000/token', {
+    method: 'POST',
+        headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+            'username': usernameInput,
+            'password': password,
+        }),
+    });
+                
+const data = await response.json();
+                </code>
+            </pre>
+            <p>Write your own code with it</p>
+            <pre>
+                <code>
+fetch('http://localhost:8000/update_pixel', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+    },
+    body: JSON.stringify({
+        x: 10,
+        y: 10,
+        color: '#ff0000',
+        user_id: 'your_user_id',
+        username: 'your_username'
+    }),
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+                </code>
+            </pre>
+            <p>maybe add a little <b>For</b> loop 😉</p>
+        </div>
     </div>
-    <div id="board" class="board"></div>
+    <button id="how-to-play-button">How to Play</button>
+    <div id="how-to-play-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-how-to-play-button">&times;</span>
+            <h2>How to Play the Game (Funny Edition)</h2>
+            <p>🎨 <b>Chaos Squad:</b> Pick one pixel and keep changing its color every 5 seconds to mess with everyone’s attempts to create something meaningful. Call it "Pixel Warfare."</p>
+            <p>🖌️ <b>Pixel Picasso:</b> Write a script using the API to draw the most abstract art imaginable—like a banana that slowly transforms into a boat. Bonus points if nobody recognizes it until it’s complete.</p>
+            <p>🤝 <b>Friendly Sabotage:</b> Team up with friends to subtly alter someone else’s artwork pixel by pixel. Turn their masterpiece into a smiley face when they're not looking.</p>
+            <p>🛡️ <b>Peacekeeper:</b> Guard your chosen pixel. Anyone changes it? BAM! Change it back within 5 seconds. Declare it "Pixel Protectorate."</p>
+            <p>🚩 <b>Battle of Flags:</b> Create a mini-flag of your country and challenge others to either extend or overwrite it. Start a "Flag Fight!"</p>
+            <p>🕵️ <b>Secret Messages:</b> Write cryptic messages pixel by pixel, then watch others debate if they’re clues for a treasure hunt or just nonsense.</p>
+            <p>🐢 <b>Lagging Meme Generator:</b> Use the API to create a pixel-by-pixel animation of a meme over several minutes. Let others guess the meme before it’s complete.</p>
+            <p>👩‍🎨 <b>Team Artistry:</b> Form an alliance and try to create the Mona Lisa... with random people changing colors mid-paint.</p>
+            <p>🎨 <b>The "Oops" Artist:</b> Choose random pixels and colors every 5 seconds without looking. Call it "Modern Art."</p>
+            <p>🏴‍☠️ <b>Conqueror Mode:</b> Declare a chunk of pixels your "territory" and defend it fiercely from invaders. Slogans like "My Pixel, My Rule!" are optional but encouraged.</p>
+            <p>Let the madness unfold!</p>
+        </div>
+    </div>
 
+    <div class="auth-container">
+        <div id="login">
+
+            <img src="image-removebg-preview.png" alt="Register Image" class="form-image">
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" id="show-register">Register here</a></p>
+            <p>This game is upto your imagination. Go Crazy and Have Fun</p>
+        </div>
+        <div id="register" style="display: none;">
+            <img src="image-removebg-preview.png" alt="Register Image" class="form-image">
+            <h2>Register</h2>
+            <form id="register-form">
+                <label for="reg-username">Username:</label>
+                <input type="text" id="reg-username" name="username" required>
+                <label for="reg-password">Password:</label>
+                <input type="password" id="reg-password" name="password" required>
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="#" id="show-login">Login here</a></p>
+            <p>This game is upto your imagination. Go Crazy and Have Fun</p>
+        </div>
+        
+    </div>
+    <div id="board-container" style="display: none;">
+        <div class="status">Selected color: red</div>
+        <input type="color" id="color-picker" value="#ff0000">
+        <div id="board"></div>
+    </div>
+    <div id="custom-cursor"></div>
     <script src="script.js"></script>
 </body>
 </html>

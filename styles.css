@@ -3,6 +3,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: linear-gradient(135deg, #1e1e1e, #3a3a3a);
+    color: #fff;
+    cursor: none;
+    margin: 0; /* Reset body margin */
+    padding: 0; /* Reset body padding */
+    height: 100vh;
 }
 
 .status {
@@ -44,4 +50,233 @@ body {
     cursor: pointer;
     background-color: white;
     border: 1px solid #ddd;
+}
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+#login, #register {
+    margin: 10px 0; /* Add some margin between login and register */
+    padding: 20px; /* Ensure padding is consistent */
+    background-color: #2c2c2c; /* Ensure background color is consistent */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+#board-container {
+    margin: 10px; /* Adjust margin as needed */
+    padding: 20px; /* Ensure padding is consistent */
+    background-color: #2c2c2c; /* Ensure background color is consistent */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+h2 {
+    margin-top: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+}
+
+#info-button {
+    position: absolute;
+    top: 10px;
+    right: 10px; /* Move to top right */
+    padding: 10px 20px;
+    background-color: #6c757d; /* Greyish color */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#info-button:hover {
+    background-color: #5a6268; /* Darker grey on hover */
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #2c2c2c;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form-image {
+    width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="password"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #444;
+    color: #fff;
+}
+
+#color-picker {
+    margin-bottom: 10px;
+}
+
+#board {
+    display: grid;
+    gap: 1px;
+    background-color: #ccc;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.pixel {
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+}
+
+.pixel:hover {
+    opacity: 0.8;
+}
+
+#custom-cursor {
+    position: absolute;
+    width: 20px; /* Adjust the size as needed */
+    height: 20px; /* Adjust the size as needed */
+    background-color: red; /* Change to your desired color */
+    border: none; /* Remove the border */
+    border-radius: 50%; /* Optional: Make it a circle */
+    pointer-events: none; /* Ensure the cursor doesn't interfere with other elements */
+    z-index: 1000; /* Ensure it appears above other elements */
+    transform: translate(-50%, -50%); /* Center the cursor */
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.7); /* Brighter glow effect */
+    transition: box-shadow 0.2s ease, background-color 0.2s ease; /* Smooth transition for glow and color */
+}
+
+#how-to-play-button {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#how-to-play-button:hover {
+    background-color: #5a6268;
+}
+
+#how-to-play-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#how-to-play-modal .modal-content {
+    background-color: #2c2c2c;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.close-how-to-play-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-how-to-play-button:hover,
+.close-how-to-play-button:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
 }
