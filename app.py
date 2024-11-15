@@ -25,7 +25,7 @@ app.add_middleware(
 )
 
 # Connect to Redis
-redis_client = redis.StrictRedis(host="ec2-13-233-190-109.ap-south-1.compute.amazonaws.com", port=6379, decode_responses=True)
+redis_client = redis.StrictRedis(host="localhost", port=6379, decode_responses=True)
 
 # Define board dimensions and cooldown period (e.g., 5 seconds)
 BOARD_WIDTH = 100
