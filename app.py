@@ -7,7 +7,7 @@ from passlib.context import CryptContext
 from jose import JWTError, jwt
 import redis
 import time
-from typing import Optional
+from typing import Optional, List
 from datetime import datetime, timedelta
 from sqlalchemy import create_engine, Column, Integer, String, Boolean
 from sqlalchemy.ext.declarative import declarative_base
@@ -269,3 +269,19 @@ def get_board(current_user: User = Depends(get_current_active_user)):
     formatted_board = {k: v.split(',')[0] for k, v in board.items()}  # Extract only the color for display
     sorted_board = dict(sorted(formatted_board.items(), key=lambda item: (int(item[0].split(',')[0]), int(item[0].split(',')[1]))))
     return {"board": sorted_board}
+
+
+class UserResponse(BaseModel):
+    id: int
+    username: str
+    email: str
+    full_name: str
+    disabled: bool
+    
+@app.get("/users", response_model=List[UserResponse])
+async def get_all_users(special_string: str, db: Session = Depends(get_db), current_user: User = Depends(get_current_active_user)):
+    if special_string != "your_special_string":
+        raise HTTPException(status_code=403, detail="Forbidden")
+    
+    users = db.query(User).all()
+    return users
