@@ -6,3 +6,4 @@ sqlalchemy
 pydantic
 passlib
 python-jose
+python-multipart
