@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y redis-server
 
 # Expose the port the app runs on
 EXPOSE 8000
-EXPOSE 8001
+EXPOSE 3000
 
 # Start Redis server
 RUN service redis-server start
